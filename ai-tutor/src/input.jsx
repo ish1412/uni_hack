@@ -4,17 +4,18 @@ import {
   Route,
   Routes,
   useNavigate,
-} from "react-router-dom"; // Import necessary routing components
-import "./Input.css"; // Import your custom CSS file for component-specific styling
-import Home from "./home"; // Import Home component
+} from "react-router-dom"; // Import routing components
+import "./Input.css"; // Custom CSS for the page
+import Home from "./home"; // Home component where the "Try Now" buttons are
+import ChatRoom from "./chatroom"; // Chat room component for individual tutors
 
 const Input = () => {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
-  const navigate = useNavigate(); // Initialize navigate hook
+  const navigate = useNavigate(); // Navigate hook for routing
 
   const handleSubmit = () => {
-    // Redirect to Home page when the button is clicked
+    // On submit, navigate to the Home page
     navigate("/home");
   };
 
@@ -53,9 +54,11 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Input />} />
+        <Route path="/" element={<Input />} /> {/* Input form page */}
         <Route path="/home" element={<Home />} />{" "}
-        {/* Define the route for the Home page */}
+        {/* Home page with "Try Now" buttons */}
+        <Route path="/chatroom/:tutorId" element={<ChatRoom />} />{" "}
+        {/* Dynamic route for ChatRoom */}
       </Routes>
     </Router>
   );
