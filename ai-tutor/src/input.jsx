@@ -22,6 +22,10 @@ const Input = () => {
   return (
     <div className="centered-container">
       <div className="form-container">
+      <header className="header">
+        <h1>Keen to learn and be empowered!?</h1>
+        <p>Join now</p>
+        </header>
         <div className="input-group">
           <input
             type="text"

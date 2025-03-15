@@ -14,6 +14,21 @@
   align-items: center; /* Center everything horizontally */
   gap: 16px; /* Space between input fields and button */
 }
+/*Header Styling*/
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: #4b4b4b;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #777;
+}
 
 /* Styling for the input groups */
 .input-group {
