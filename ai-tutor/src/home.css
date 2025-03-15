@@ -1,0 +1,90 @@
+/* General body styles */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the entire content */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center; /* Centers content vertically */
+  padding: 20px;
+}
+
+/* Header styling */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: #4b4b4b;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+/* Main content styling (flex layout for the cards) */
+.main-content {
+  display: flex;
+  justify-content: center; /* Center the cards horizontally */
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px; /* You can adjust the max width as per your design */
+}
+
+/* Individual tool card styling */
+.tool-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: 250px; /* Set a fixed width for the cards */
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+}
+
+.tool-card h2 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.tool-card p {
+  color: #666;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.cta-button {
+  background-color: #ec4899;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #db2777;
+}
+
+/* Footer styling */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+}

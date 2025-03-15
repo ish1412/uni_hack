@@ -1,9 +1,22 @@
 import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom"; // Import necessary routing components
 import "./Input.css"; // Import your custom CSS file for component-specific styling
+import Home from "./home"; // Import Home component
 
 const Input = () => {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
+  const navigate = useNavigate(); // Initialize navigate hook
+
+  const handleSubmit = () => {
+    // Redirect to Home page when the button is clicked
+    navigate("/home");
+  };
 
   return (
     <div className="centered-container">
@@ -28,10 +41,24 @@ const Input = () => {
           />
         </div>
 
-        <button className="submit-button">Submit</button>
+        <button className="submit-button" onClick={handleSubmit}>
+          Submit
+        </button>
       </div>
     </div>
   );
 };
 
-export default Input;
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Input />} />
+        <Route path="/home" element={<Home />} />{" "}
+        {/* Define the route for the Home page */}
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
