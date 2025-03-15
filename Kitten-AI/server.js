@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Serve the index.html file for the root route
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/ai-tutor-Website/index.html'));
+});
+
 // Route to handle chat requests
 app.post('/api/chat', async (req, res) => {
   try {
