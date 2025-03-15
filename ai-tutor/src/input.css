@@ -1,0 +1,60 @@
+/* Centering the entire container */
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  margin: 0; /* Remove default margins */
+}
+
+/* Form container with spacing between inputs */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center everything horizontally */
+  gap: 16px; /* Space between input fields and button */
+}
+
+/* Styling for the input groups */
+.input-group {
+  display: flex;
+  align-items: center; /* Align the input field and text */
+  gap: 12px; /* Space between text and input field */
+  width: 100%; /* Allow the input group to expand across available space */
+  max-width: 250px; /* Limit the width to match button */
+}
+
+/* Styling for the text next to the input */
+.input-text {
+  font-size: 14px;
+  color: #555;
+  width: 120px; /* Fixed width to keep the text aligned */
+  text-align: left;
+}
+
+/* Styling for the input fields */
+.input-field {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  width: 100%; /* Take up full width of the .input-group */
+  flex-grow: 1; /* Make the input fields take up remaining space */
+}
+
+/* Button styling */
+.submit-button {
+  background-color: #ec4899;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 250px; /* Same width as input fields */
+}
+
+.submit-button:hover {
+  background-color: #db2777; /* Darker pink on hover */
+}
