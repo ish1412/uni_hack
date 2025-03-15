@@ -7,6 +7,69 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script defer src="script.js"></script>
+    <style>
+        /* Styling for typing indicator */
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+            padding: 10px 0;
+        }
+        
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: inline-block;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+        
+        .typing-dots span:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { 
+                transform: translateY(0);
+            }
+            40% { 
+                transform: translateY(-8px);
+            }
+        }
+        
+        /* Add this to the locked class for clearer visual indication */
+        .locked {
+            opacity: 0.7;
+            position: relative;
+        }
+        
+        .locked::after {
+            content: "🔒";
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 14px;
+        }
+        
+        /* Improve chat messages */
+        .message {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -192,8 +255,8 @@
     <section id="chat" class="chat-section">
         <div class="container">
             <div class="section-header">
-                <h2>Start <span class="highlight">Chatting</span></h2>
-                <p>Your AI tutor is ready to help</p>
+                <h2>Chat with <span class="highlight">Gemini AI</span></h2>
+                <p>Your AI productivity coach powered by advanced language models</p>
             </div>
             <div class="chat-interface">
                 <div class="chat-sidebar">
@@ -203,8 +266,8 @@
                         </div>
                         <div class="user-progress">
                             <div class="progress-item">
-                                <span>Study streak:</span>
-                                <span id="Study streak" class="progress-value">0 days</span>
+                                <span>Streak:</span>
+                                <span id="streak" class="progress-value">0 days</span>
                             </div>
                             <div class="progress-item">
                                 <span>Points:</span>
@@ -230,28 +293,33 @@
                             <span>Progress</span>
                         </a>
                         <a href="#" class="sidebar-item locked">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Features</span>
+                        </a>
+                        <a href="#" class="sidebar-item locked">
                             <i class="fas fa-cog"></i>
                             <span>Settings</span>
                         </a>
                     </div>
+                    
+                    <!-- Add AI model info badge -->
+                    <div class="ai-model-badge">
+                        <i class="fas fa-robot"></i>
+                        <span>Powered by Gemini AI</span>
+                    </div>
                 </div>
                 <div class="chat-window">
                     <div id="chat-history" class="chat-history">
-                        <div class="message ai-message">
-                            <div class="message-avatar">
-                                <img src="ai_avatar.svg" alt="AI">
-                            </div>
-                            <div class="message-content">
-                                <p>Hello! I'm your AI productivity companion. How can I help you today?</p>
-                            </div>
-                        </div>
-                        <!-- More messages will be dynamically added here -->
+                        <!-- Messages will be added here dynamically -->
                     </div>
                     <div class="chat-input">
-                        <input type="text" id="user-input" placeholder="Type your message...">
+                        <input type="text" id="user-input" placeholder="Ask me anything about productivity or goals...">
                         <button id="send-btn">
                             <i class="fas fa-paper-plane"></i>
                         </button>
+                    </div>
+                    <div class="chat-footer">
+                        <p class="ai-disclaimer">Responses are generated by AI and may not always be perfect. For best results, be specific with your questions.</p>
                     </div>
                 </div>
             </div>
