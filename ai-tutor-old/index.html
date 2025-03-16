@@ -259,68 +259,272 @@
                 <p>Your AI productivity coach powered by advanced language models</p>
             </div>
             <div class="chat-interface">
-                <div class="chat-sidebar">
-                    <div class="user-profile">
-                        <div class="user-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="user-progress">
-                            <div class="progress-item">
-                                <span>Streak:</span>
-                                <span id="streak" class="progress-value">0 days</span>
-                            </div>
-                            <div class="progress-item">
-                                <span>Points:</span>
-                                <span id="points" class="progress-value">0</span>
-                            </div>
-                            <div class="progress-item">
-                                <span>Level:</span>
-                                <span id="level" class="progress-value">Beginner</span>
-                            </div>
-                        </div>
+                <!-- Replace the chat-sidebar section with this updated version -->
+        <div class="chat-sidebar">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-progress">
+                    <div class="progress-item">
+                        <span>Streak:</span>
+                        <span id="streak" class="progress-value">0 days</span>
                     </div>
-                    <div class="sidebar-menu">
-                        <a href="#" class="sidebar-item active">
-                            <i class="fas fa-comment"></i>
-                            <span>Chat</span>
-                        </a>
-                        <a href="#" class="sidebar-item locked">
-                            <i class="fas fa-tasks"></i>
-                            <span>Goals</span>
-                        </a>
-                        <a href="#" class="sidebar-item locked">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Progress</span>
-                        </a>
-                        <a href="#" class="sidebar-item locked">
-                            <i class="fas fa-brain"></i>
-                            <span>AI Features</span>
-                        </a>
-                        <a href="#" class="sidebar-item locked">
-                            <i class="fas fa-cog"></i>
-                            <span>Settings</span>
-                        </a>
+                    <div class="progress-item">
+                        <span>Points:</span>
+                        <span id="points" class="progress-value">0</span>
                     </div>
-                    
-                    <!-- Add AI model info badge -->
-                    <div class="ai-model-badge">
-                        <i class="fas fa-robot"></i>
-                        <span>Powered by Gemini AI</span>
+                    <div class="progress-item">
+                        <span>Level:</span>
+                        <span id="level" class="progress-value">Iron</span>
                     </div>
                 </div>
-                <div class="chat-window">
-                    <div id="chat-history" class="chat-history">
-                        <!-- Messages will be added here dynamically -->
+            </div>
+            <div class="sidebar-menu">
+                <a href="#" class="sidebar-item active" data-target="chat-container">
+                    <i class="fas fa-comment"></i>
+                    <span>Chat</span>
+                </a>
+                <a href="#" class="sidebar-item" data-target="goals-container">
+                    <i class="fas fa-tasks"></i>
+                    <span>Goals</span>
+                </a>
+                <a href="#" class="sidebar-item" data-target="progress-container">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Progress</span>
+                </a>
+                <a href="#" class="sidebar-item" data-target="journal-container">
+                    <i class="fas fa-book"></i>
+                    <span>Journal</span>
+                </a>
+                <a href="#" class="sidebar-item" data-target="leaderboard-container">
+                    <i class="fas fa-trophy"></i>
+                    <span>Leaderboard</span>
+                </a>
+                <a href="#" class="sidebar-item locked" data-target="settings-container">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+            
+            <!-- Add AI model info badge -->
+            <div class="ai-model-badge">
+                <i class="fas fa-robot"></i>
+                <span>Powered by Gemini AI</span>
+            </div>
+        </div>
+
+        <!-- Replace the chat-window section with this updated version -->
+        <div class="chat-window">
+            <!-- Chat Container -->
+            <div id="chat-container" class="content-container">
+                <div id="chat-history" class="chat-history">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Ask me anything about productivity or goals...">
+                    <button id="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="chat-footer">
+                    <p class="ai-disclaimer">Responses are generated by AI and may not always be perfect. For best results, be specific with your questions.</p>
+                </div>
+            </div>
+            
+            <!-- Goals Container -->
+            <div id="goals-container" class="content-container" style="display: none;">
+                <div class="content-header">
+                    <h2>Your Goals</h2>
+                    <button id="new-goal-btn" class="action-btn">
+                        <i class="fas fa-plus"></i> Add Goal
+                    </button>
+                </div>
+                <div class="content-body">
+                    <!-- Goals will be added here dynamically -->
+                    <div class="empty-state">
+                        <i class="fas fa-tasks"></i>
+                        <p>You haven't created any goals yet. Click "Add Goal" to get started!</p>
                     </div>
-                    <div class="chat-input">
-                        <input type="text" id="user-input" placeholder="Ask me anything about productivity or goals...">
-                        <button id="send-btn">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
+                </div>
+            </div>
+            
+            <!-- Progress Container -->
+            <div id="progress-container" class="content-container" style="display: none;">
+                <div class="content-header">
+                    <h2>Your Progress</h2>
+                </div>
+                <div class="content-body">
+                    <!-- Progress will be shown here dynamically -->
+                    <div class="empty-state">
+                        <i class="fas fa-chart-bar"></i>
+                        <p>No goals to track yet. Add some goals to see your progress!</p>
                     </div>
-                    <div class="chat-footer">
-                        <p class="ai-disclaimer">Responses are generated by AI and may not always be perfect. For best results, be specific with your questions.</p>
+                </div>
+            </div>
+            
+            <!-- Journal Container -->
+            <div id="journal-container" class="content-container" style="display: none;">
+                <div class="journal-wrapper">
+                    <div class="journal-sidebar">
+                        <div class="journal-header">
+                            <h3>Entries</h3>
+                            <button id="new-journal-btn" class="action-btn-sm">
+                                <i class="fas fa-plus"></i> New
+                            </button>
+                        </div>
+                        <div id="journal-list" class="journal-list">
+                            <!-- Journal entries will be listed here -->
+                            <div class="empty-state">
+                                <i class="fas fa-book"></i>
+                                <p>No journal entries yet. Click the "New" button to start writing!</p>
+                            </div>
+                        </div>
                     </div>
+                    <div class="journal-editor">
+                        <div class="journal-editor-header">
+                            <input type="text" id="journal-title" placeholder="Entry Title" class="journal-title-input">
+                            <div class="journal-actions">
+                                <button id="save-journal-btn" class="action-btn-sm">
+                                    <i class="fas fa-save"></i> Save
+                                </button>
+                                <button id="delete-journal-btn" class="action-btn-sm danger" disabled>
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="journal-content" class="journal-content-input" placeholder="Start writing your thoughts here..."></textarea>
+                        <input type="hidden" id="current-journal-id" value="">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Leaderboard Container -->
+            <div id="leaderboard-container" class="content-container" style="display: none;">
+                <div class="content-header">
+                    <h2>Leaderboard</h2>
+                    <div id="user-rank" class="user-rank">You are #11</div>
+                </div>
+                <div class="content-body">
+                    <!-- Leaderboard will be shown here dynamically -->
+                </div>
+            </div>
+            
+            <!-- Settings Container -->
+            <div id="settings-container" class="content-container" style="display: none;">
+                <div class="content-header">
+                    <h2>Settings</h2>
+                </div>
+                <div class="content-body">
+                    <div class="settings-section">
+                        <h3>AI Personality</h3>
+                        <div class="personality-options">
+                            <button class="personality-btn" data-personality="friendly">Friendly</button>
+                            <button class="personality-btn" data-personality="strict">Strict</button>
+                            <button class="personality-btn" data-personality="analytical">Analytical</button>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Notification Preferences</h3>
+                        <div class="setting-item">
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span>Goal Reminders</span>
+                        </div>
+                        <div class="setting-item">
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span>Daily Streak Notifications</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add these modal components at the end of the body tag -->
+        <!-- Goal Modal -->
+        <div id="goal-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add New Goal</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="goal-form">
+                        <div class="form-group">
+                            <label for="goal-title">Goal Title*</label>
+                            <input type="text" id="goal-title" required placeholder="e.g., Complete Web Development Course">
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-description">Description</label>
+                            <textarea id="goal-description" placeholder="Details about your goal..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-category">Category</label>
+                            <select id="goal-category">
+                                <option value="Personal">Personal</option>
+                                <option value="Work">Work</option>
+                                <option value="Education">Education</option>
+                                <option value="Health">Health</option>
+                                <option value="Financial">Financial</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-date">Target Date*</label>
+                            <input type="date" id="goal-date" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary modal-close">Cancel</button>
+                            <button type="submit" class="btn-primary">Create Goal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Goal Modal -->
+        <div id="edit-goal-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Goal</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-goal-form">
+                        <input type="hidden" id="edit-goal-id">
+                        <div class="form-group">
+                            <label for="edit-goal-title">Goal Title*</label>
+                            <input type="text" id="edit-goal-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-goal-description">Description</label>
+                            <textarea id="edit-goal-description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-goal-category">Category</label>
+                            <select id="edit-goal-category">
+                                <option value="Personal">Personal</option>
+                                <option value="Work">Work</option>
+                                <option value="Education">Education</option>
+                                <option value="Health">Health</option>
+                                <option value="Financial">Financial</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-goal-date">Target Date*</label>
+                            <input type="date" id="edit-goal-date" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary modal-close">Cancel</button>
+                            <button type="submit" class="btn-primary">Update Goal</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
